@@ -19,8 +19,8 @@ namespace ConsoleApp1
             GerarAleatorio();
         }
 
-        public double W1 { get; private set; }
-        public double W2 { get; private set; }
+        public double W1 { get; set; }
+        public double W2 { get; set; }
 
         private void GerarAleatorio()
         {

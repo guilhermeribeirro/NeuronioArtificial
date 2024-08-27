@@ -51,9 +51,8 @@ namespace ConsoleApp1
         {
             return true;
         }
-        private double RecalcularNovoPeso()
+        private void RecalcularPeso(Entradas item)
         {
-
             pesos.W1 += taxaAprendizado * erro * item.Entrada1;
             pesos.W2 += taxaAprendizado * erro * item.Entrada2;
         }
