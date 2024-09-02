@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using ConsoleApp1;
 
 namespace NeuralNetworkTraining
-{
+  {
+
+
     class Program
     {
+
         static void Main(string[] args)
         {
-            
             NeuronioArtificial neuronioArtificial = new NeuronioArtificial(0.5);
 
-            // Criar uma lista de entradas
-            List<Entradas> listaEntradas = new List<Entradas>();
+             List<Entradas>listaEntradas = new List<Entradas>();
 
-            // Solicitar ao usuário que insira os dados
-            Console.WriteLine("Quantos exemplos de treino você deseja inserir?");
+            Console.WriteLine("Quantos exemplos do treino voce deseja inserir? ");
             int numExemplos = int.Parse(Console.ReadLine());
 
             for (int i = 0; i < numExemplos; i++)
@@ -25,32 +26,35 @@ namespace NeuralNetworkTraining
                 Console.Write("Entrada 1: ");
                 double entrada1 = double.Parse(Console.ReadLine());
 
-                Console.Write("Entrada 2: ");
+                Console.WriteLine("Entrada 2: ");
                 double entrada2 = double.Parse(Console.ReadLine());
 
-                Console.Write("Resultado Esperado: ");
+                Console.WriteLine("Resultado esperado na saida: ");
                 int resultadoEsperado = int.Parse(Console.ReadLine());
 
-                // Adicionar a nova entrada à lista
                 listaEntradas.Add(new Entradas(entrada1, entrada2, resultadoEsperado));
+                
+
             }
 
-            // Treinar o neurônio artificial com a lista de entradas
+
             neuronioArtificial.Treinar(listaEntradas);
 
-            // Testar o neurônio artificial com novas entradas
-            Console.WriteLine("Agora vamos testar o neurônio. Insira os valores de entrada.");
+            Console.WriteLine($"Agora inseri outros valores que poderemos testar: ");
+            Console.WriteLine("Entrada 1: ");
+            double Novaentrada1 = double.Parse(Console.ReadLine());
 
-            Console.Write("Entrada 1: ");
-            double testEntrada1 = double.Parse(Console.ReadLine());
+            Console.WriteLine("Entrada 2: ");
+            double Novaentrada2 = double.Parse(Console.ReadLine());
 
-            Console.Write("Entrada 2: ");
-            double testEntrada2 = double.Parse(Console.ReadLine());
+            int repostaObtida = neuronioArtificial.Perguntar(Novaentrada1, Novaentrada2);
 
-            int resposta = neuronioArtificial.Perguntar(testEntrada1, testEntrada2);
-            Console.WriteLine($"Resposta: {resposta}");
+            Console.WriteLine("Resposta obtida");
+            Console.WriteLine($"{repostaObtida}");
 
-            Console.ReadKey();
+
+
+
         }
     }
 }
